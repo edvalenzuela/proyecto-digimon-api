@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  digimonURL : 'https://digimon-api.herokuapp.com/api/digimon',
+  digimonID : 'https://digimon-api.herokuapp.com/api/digimon/id/',
+  digimonNAME : 'https://digimon-api.herokuapp.com/api/digimon/name/',
+  digimonLEVEL : 'https://digimon-api.herokuapp.com/api/digimon/level/'
 };
 
 /*

@@ -1,17 +1,7 @@
 <div class="loading" *ngIf="!digimonsCargados">
     Loading Digimons ...
 </div>
-
 <div class="card-columns" *ngIf="digimonsCargados && digimons">
-    <div class="card" *ngFor="let digi of digimons; let i = index">
-        <div class="card-block">
-            <div class="card-body">
-                <h5 class="card-title"><span class="identificador">{{digi.id}} </span> {{digi.name | uppercase}}</h5>
-            </div>
-            <img [src]="digi.img" class="img-fluid card-img-top" [alt]="digi.name" [title]="digi.name">
-            <div class="card-footer">
-                <small class="text-muted">{{digi.level}}</small>
-            </div>
-        </div>
-    </div>
+    <!-- Es toda la información de un digimon alojada en un componente hijo -->
+    <app-digimons-individual [index]="i" [digimon_individual]="miDigimon" *ngFor="let miDigimon of digimons; let i = index"></app-digimons-individual>
 </div>

@@ -8,18 +8,16 @@ import { DigimonsService } from './services/digimons.service';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { DigimonsHomeComponent } from './components/digimons-home/digimons-home.component';
-import { DigimonIdComponent } from './components/digimons-buscador/digimon-id/digimon-id.component';
-import { DigimonNombreComponent } from './components/digimons-buscador/digimon-nombre/digimon-nombre.component';
-import { DigimonNivelComponent } from './components/digimons-buscador/digimon-nivel/digimon-nivel.component';
+import { DigimonsBuscadorComponent } from './components/digimons-buscador/digimons-buscador.component';
+import { DigimonsIndividualComponent } from './components/digimons-individual/digimons-individual.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     DigimonsHomeComponent,
-    DigimonIdComponent,
-    DigimonNombreComponent,
-    DigimonNivelComponent
+    DigimonsBuscadorComponent,
+    DigimonsIndividualComponent
   ],
   imports: [
     BrowserModule,

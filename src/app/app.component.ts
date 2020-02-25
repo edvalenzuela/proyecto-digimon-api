@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DigiAPI } from './../interfaces';
+import { ArregloDigimon } from './../interfaces';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +7,12 @@ import { DigiAPI } from './../interfaces';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public digimons:Array<DigiAPI>;
+ public digimones: Array<ArregloDigimon>; //declaro una variable arreglo de los datos de la interfaz
 
-  exportDigimons(digimons:Array<DigiAPI>):void{
-    if(this.digimons !== digimons){
-      this.digimons = digimons;
-    }
+ mostrarPokemonOrigen(digimones: Array<ArregloDigimon>):void{//metodo que retorna un array de digimon interfaz
+  if(this.digimones !== digimones){//Si es distinto lo igualo al parametro entrada
+    this.digimones = digimones;
   }
+
+ }
 }

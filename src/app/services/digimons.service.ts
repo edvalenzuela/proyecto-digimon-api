@@ -5,7 +5,7 @@ import { catchError } from 'rxjs/operators';
 
 import { environment } from 'src/environments/environment';
 import { DigiAPI, ArregloDigimon } from 'src/interfaces';
-//import { digimonsModels } from 'src/app/models/digimons';
+import { UsuarioModels } from 'src/app/models/usuarios';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,12 @@ import { DigiAPI, ArregloDigimon } from 'src/interfaces';
 export class DigimonsService {
 
   public ArregloDigimon:any;
+  public miUsuario:UsuarioModels;
 
   constructor(private http:HttpClient) {
     this.ArregloDigimon = environment.digimonURL;
+    this.miUsuario = new UsuarioModels(1,"roger","qwerty","admin");
+    this.miUsuario = new UsuarioModels(2,"washo","qwerty","user");
   }
 
   //Metodo obtener todos los digimons

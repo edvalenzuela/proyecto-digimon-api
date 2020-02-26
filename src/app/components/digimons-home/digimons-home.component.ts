@@ -26,8 +26,13 @@ export class DigimonsHomeComponent implements OnInit {
   getDigimons(): void{
       this.digimonService.getDigimon().subscribe((data: ArregloDigimon) =>{
         this.digimons = data;//Guardo el data del suscribe y lo asocio
-        this.digimonsCargados = true;
-        console.log(this.digimons);
+        //console.log(this.digimons);
+        if(this.digimons){
+          this.digiOrigen.emit(this.digimons);
+          this.digimonsCargados = true;
+        }else{
+          this.digimonsCargados = false;
+        }
         
         //Como ya es una matriz no se puede recorrer, debido al get del service
         //https://stackoverflow.com/questions/53680000/angular-subscribe-push-object-to-array

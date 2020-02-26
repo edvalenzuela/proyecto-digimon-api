@@ -1,7 +1,9 @@
 <div class="loading" *ngIf="!digimonsCargados">
-    Loading Digimons ...
+    Cargando Digimons ...
 </div>
-<div class="card-columns" *ngIf="digimonsCargados && digimons">
-    <!-- Es toda la información de un digimon alojada en un componente hijo -->
-    <app-digimons-individual [index]="i" [digimon_individual]="miDigimon" *ngFor="let miDigimon of digimons; let i = index"></app-digimons-individual>
+<div class="container">
+    <div class="card-deck row" *ngIf="digimonsCargados && digimons">
+        <!-- Es toda la información de un digimon alojada en un componente hijo -->
+        <app-digimons-individual class="col-md-4 col-sm-6 col-lg-3 col-12" [index]="i" [digimon_individual]="miDigimon" *ngFor="let miDigimon of digimons; let i = index"></app-digimons-individual>
+    </div>
 </div>

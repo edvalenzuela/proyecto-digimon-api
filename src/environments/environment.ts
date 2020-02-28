@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   digimonURL : 'https://digimon-api.herokuapp.com/api/digimon',
-  digimonID : 'https://digimon-api.herokuapp.com/api/digimon/id/',
-  digimonNAME : 'https://digimon-api.herokuapp.com/api/digimon/name/',
-  digimonLEVEL : 'https://digimon-api.herokuapp.com/api/digimon/level/'
+  digimonID : 'https://digimon-api.herokuapp.com/api/digimon/id',
+  digimonNAME : 'https://digimon-api.herokuapp.com/api/digimon/name',
+  digimonLEVEL : 'https://digimon-api.herokuapp.com/api/digimon/level'
 };
 
 /*

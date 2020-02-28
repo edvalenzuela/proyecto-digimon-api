@@ -1,7 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DigiAPI, ArregloDigimon } from 'src/interfaces';
-import { DigimonsService } from 'src/app/services/digimons.service';
-import { UsuarioModels } from 'src/app/models/usuarios';
+import { DigimonsService } from '../../services/digimons.service';
 
 @Component({
   selector: 'app-digimons-home',
@@ -10,10 +9,9 @@ import { UsuarioModels } from 'src/app/models/usuarios';
 })
 export class DigimonsHomeComponent implements OnInit {
   
-  @Output() digiOrigen = new EventEmitter();
+  //@Output() digiOrigen = new EventEmitter();
   digimons: ArregloDigimon;
   digiAPI : DigiAPI;
-  misNuevosDigimons:any[];
   digimonsCargados: boolean;
 
   constructor(private digimonService: DigimonsService) { }
@@ -26,12 +24,10 @@ export class DigimonsHomeComponent implements OnInit {
   getDigimons(): void{
       this.digimonService.getDigimon().subscribe((data: ArregloDigimon) =>{
         this.digimons = data;//Guardo el data del suscribe y lo asocio
-        //console.log(this.digimons);
+        console.log(this.digimons);
         if(this.digimons){
-          this.digiOrigen.emit(this.digimons);
+          //this.digiOrigen.emit(this.digimons);
           this.digimonsCargados = true;
-        }else{
-          this.digimonsCargados = false;
         }
         
         //Como ya es una matriz no se puede recorrer, debido al get del service
@@ -48,5 +44,4 @@ export class DigimonsHomeComponent implements OnInit {
         });*/
       });
   }
-
 }

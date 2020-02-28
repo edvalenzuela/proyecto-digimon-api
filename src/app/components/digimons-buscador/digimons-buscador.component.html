@@ -1,3 +1,27 @@
-<p>
-  digimons-buscador works!
-</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label>Buscar</label>
+                <input type="text" [(ngModel)]="buscarDigimon" name="buscarDigimon" (keyup.enter)="buscarTodos()" class="form-control" placeholder="Busca un digimon por id, nombre o nivel">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+                Usted busco por : {{ buscarDigimon }}
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="digimonsEncontrados.length == 0">
+        <div class="col-md-12">
+            <div class="alert alert-info" role="alert">
+                No hay resultados sobre {{ buscarDigimon }}
+            </div>
+        </div>
+    </div>
+    <div class="row m-5">
+        <app-digimons-individual class="col-md-4 col-sm-6 col-lg-3 col-12" [index]="i" [digimon_individual]="miDigimon" *ngFor="let miDigimon of digimonsEncontrados; let i = index"></app-digimons-individual>
+    </div>
+</div>

@@ -1,11 +1,11 @@
 <div class="card border-dark">
     <div class="card-header">
-        <h5 class="card-title"><span class="identificador">{{digimon_individual.id}} </span> {{digimon_individual.name | uppercase}}</h5>
+        <h5 class="card-title"><span class="identificador">{{digimon_individual.id}} </span>{{digimon_individual.name | uppercase}}</h5>
     </div>
     <div class="card-body">
         <img [src]="digimon_individual.img" class="img-fluid card-img-top" [alt]="digimon_individual.name" [title]="digimon_individual.name">
     </div>
     <div class="card-footer">
-        <small class="text-muted">{{digimon_individual.level | uppercase}}</small>
+        <small class="badge badge-pill badge-secondary">Nivel : {{digimon_individual.level | uppercase}}</small>
     </div>
 </div>

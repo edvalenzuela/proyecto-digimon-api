@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; //Peticiones HTTP
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms'; //Formularios
 import { AppRoutingModule } from './app-routing.module';
-import { DigimonsService } from './services/digimons.service';
+import { DigimonsService } from './services/digimons.service'; //Mis Servicios
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
@@ -22,7 +23,8 @@ import { DigimonsIndividualComponent } from './components/digimons-individual/di
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     DigimonsService

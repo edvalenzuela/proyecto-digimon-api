@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
@@ -16,15 +16,12 @@ export class DigimonsService {
   public nombres_digimones:any;
   public id_digimones:any;
   public niveles_digimones:any;
-  //public miUsuario:UsuarioModels;
 
   constructor(private http:HttpClient) {
     this.ArregloDigimon = environment.digimonURL;
     this.nombres_digimones = environment.digimonNAME;
     this.id_digimones = environment.digimonID;
     this.niveles_digimones = environment.digimonLEVEL;
-    /*this.miUsuario = new UsuarioModels(1,"roger","qwerty","admin");
-    this.miUsuario = new UsuarioModels(2,"washo","qwerty","user");*/
   }
 
   //Metodo obtener todos los digimons
@@ -33,36 +30,18 @@ export class DigimonsService {
   }*/
 
   getDigimon(): Observable<ArregloDigimon>{
-    return this.http
-      .get<ArregloDigimon>(`${this.ArregloDigimon}`)
-      .pipe(catchError(this._handleError));
+    return this.http.get<ArregloDigimon>(`${this.ArregloDigimon}`);
   }
 
   getBuscarPorNombre(termino:string){
-    return this.http
-    .get<any>(`${this.nombres_digimones}/${termino}`)
-    .pipe(catchError(this._handleError));
+    return this.http.get<any>(`${this.nombres_digimones}/${termino}`);
   }
 
   getBuscarPorId(termino:number){
-    return this.http
-    .get<any>(`${this.id_digimones}/${termino}`)
-    .pipe(catchError(this._handleError));
+    return this.http.get<any>(`${this.id_digimones}/${termino}`);
   }
 
   getBuscarPorNivel(termino:string){
-    return this.http
-    .get<any>(`${this.niveles_digimones}/${termino}`)
-    .pipe(catchError(this._handleError));
-  }
-
-  private _handleError(error: HttpErrorResponse){
-    if(error.error instanceof ErrorEvent){
-      console.error("Error detectado =>", error.error.message);
-    }else{
-      console.error(`Código del error => " ${error.status}, ` + `El contenido tiene => ${error.error}`);
-    }
-
-    return throwError('Error!');
+    return this.http.get<any>(`${this.niveles_digimones}/${termino}`);
   }
 }

@@ -15,12 +15,8 @@
                 <a class="nav-link" [routerLink]="[ 'buscador'] ">Buscar</a>
             </li>
         </ul>
-        <!--<form class="form-inline my-2 my-lg-0 ">
-            <input class="form-control mr-sm-2 " type="text " [(ngModel)]="search " (ngModelChange)="searchEvent() " (keyup.enter)="searchEvent() " placeholder="id, nombre, nivel " aria-label="Search ">
-            <button class="btn btn-outline-success my-2 my-sm-0 " *ngIf="search " type="button " (click)="searchEvent( '') ">Buscar Digimon</button>
-        </form>-->
-        <!--<form class="form-inline my-2 my-lg-0 ">
-            <input class="form-control mr-sm-2 " type="search" placeholder="Buscar Digimon" aria-label="Search ">
+        <!--<form class="form-inline my-2 my-lg-0" (ngSubmit)="buscasDigimonNavbar(termino.value)">
+            <input class="form-control mr-sm-2 " type="search" placeholder="Buscar Digimon" aria-label="Search " #termino>
             <button class="btn btn-outline-secondary my-2 my-sm-0 " type="submit ">Buscar</button>
         </form>-->
     </div>

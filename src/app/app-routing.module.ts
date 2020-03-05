@@ -9,6 +9,7 @@ import { DigimonsBuscadorComponent } from './components/digimons-buscador/digimo
 const routes: Routes = [
   { path: 'home', component:  DigimonsHomeComponent},
   { path: 'buscador', component:  DigimonsBuscadorComponent},
+  { path: 'buscador/:texto', component:  DigimonsBuscadorComponent},
   { path: '**', pathMatch: 'full', redirectTo: 'home' }
 ];
 

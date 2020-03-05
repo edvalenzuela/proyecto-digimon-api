@@ -1,5 +1,6 @@
 import { Component,EventEmitter,Input, Output, OnInit } from '@angular/core';
 import { ArregloDigimon } from 'src/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,23 +12,17 @@ export class NavbarComponent implements OnInit {
   buscar:string;
   listaDigimones:Array<ArregloDigimon>;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit() {
   }
 
-  searchEvent(buscar): void {
+  buscasDigimonNavbar(texto): void {
     // verifica si la busqueda esta limpia
-    if (buscar === '') {
-      this.buscar = buscar;
+    if (texto.length == 0) {
+      return;
     }
-    this.searchChange.emit(this.buscar);
-  }
-
-  @Input() set digimons(digimons: ArregloDigimon[]) {
-    if (digimons !== this.listaDigimones) {
-      this.listaDigimones = digimons;
-    }
+    this.router.navigate(['buscador', texto]);
   }
 
 }

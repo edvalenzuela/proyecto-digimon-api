@@ -1,27 +1,72 @@
-<div class="container">
+<div class="container mt-5">
+    <!--<div class="row">
+        <div class="col-md-12">
+            <div class="form-group"><label>Eliga una opción : </label></div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check form-check-inline" name="tipoOpcion" #tipoOpcion="ngModel" (change)="capturarRadio($event)" ngModel value="id" required>
+                <label class="form-check-label">Id</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check form-check-inline" name="tipoOpcion" #tipoOpcion="ngModel" (change)="capturarRadio($event)" ngModel value="name" required>
+                <label class="form-check-label">Nombre</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check form-check-inline" name="tipoOpcion" #tipoOpcion="ngModel" (change)="capturarRadio($event)" ngModel value="level" required>
+                <label class="form-check-label">Nivel</label>
+            </div>
+        </div>
+    </div>-->
+
     <div class="row">
+        <div class="cold-md-12">
+            <div class="form-group">
+                <label>Elige el tipo :</label>
+            </div>
+            <div class="form-group">
+                <select [(ngModel)]="opcionSeleccionado" name="opcionSeleccionado" (change)="capturar()">
+                    <option [ngValue]="dato" [value]="dato" *ngFor="let dato of datos; let i = index">
+                      {{i}}.- {{dato}} 
+                    </option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row mt-5">
         <div class="col-md-12">
             <div class="form-group">
-                <label>Buscar</label>
-                <input type="text" [(ngModel)]="buscarDigimon" name="buscarDigimon" (keyup.enter)="buscarTodos()" class="form-control" placeholder="Busca un digimon por id, nombre o nivel">
+                <label>Buscar Digimon :</label>
+                <input type="text" [(ngModel)]="buscarDigimon" name="buscarDigimon" (keyup.enter)="buscarTodos()" class="form-control" placeholder="Busca un digimon" required>
             </div>
         </div>
     </div>
-    <div class="row">
+
+    <div class="row" *ngIf="!error">
         <div class="col-md-12">
             <div class="alert alert-success" role="alert">
-                Usted busco por : {{ buscarDigimon }}
+                Resultados : {{ buscarDigimon }}
             </div>
         </div>
     </div>
-    <div class="row" *ngIf="digimonsEncontrados.length == 0">
+    <!--<div class="row" *ngIf="digimonsEncontrados.length == 0">
         <div class="col-md-12">
             <div class="alert alert-info" role="alert">
                 No hay resultados sobre {{ buscarDigimon }}
             </div>
         </div>
+    </div>-->
+
+    <!-- Errores Capturados -->
+    <div *ngIf="error" class="alert alert-danger">
+        <h3>Error</h3>
+        <p>{{ mensajeErrorCapturado }}</p>
+        <p>No hay resultados de : {{ buscarDigimon }}</p>
     </div>
-    <div class="row m-5">
+
+
+
+    <div class="row m-5" *ngIf="!error">
         <app-digimons-individual class="col-md-4 col-sm-6 col-lg-3 col-12" [index]="i" [digimon_individual]="miDigimon" *ngFor="let miDigimon of digimonsEncontrados; let i = index"></app-digimons-individual>
     </div>
 </div>

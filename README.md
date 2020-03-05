@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.8.
 
+**Eduardo Valenzuela** y **Programadores Chile** :globe_with_meridians: :computer:
+
+![image](https://drive.google.com/uc?export=view&id=11HrLYvRxoINxH16MRMpMNGMdMmMvtaD-)
+
+## Iniciar el proyecto
+
+Se usa el comando ``ng serve -o``
+
+## Información Digimon API
+
+Recordar correr los comandos ``npm install`` para instalar los packages de node_modules.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

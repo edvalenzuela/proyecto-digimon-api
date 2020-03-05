@@ -10,20 +10,20 @@ import { Observable } from 'rxjs';
 })
 export class DigimonsBuscadorComponent implements OnInit {
 
-  buscarDigimon:any;
+  buscarDigimon:string = ""; //Lo declaro vacio debido a que me lo detecta undefined al buscar, porque no he escrito nada
   opcion:string;
-  digimonsEncontrados:any[]=[];
-  mensajeErrorCapturado:string;
-  error:boolean;
-  busquedaLoad:boolean;
+  digimonsEncontrados:any[]=[]; //Guardo mis digimons encontrados y luego los recorro en el html
+  mensajeErrorCapturado:string; //Capturo el error y lo imprimo en mi html
+  error:boolean; //Flag donde capturo el error
 
-  datos:any[] = ["Seleccione","ID","Name","Level"];
-  opcionSeleccionado: string;
-  verSeleccion: string;
+  datos:any[] = ["ID","Name","Level"]; //Datos del select
+  opcionSeleccionado: string = "Seleccione"; //Opcion que adquiero del html al seleccionar
+  verSeleccion: string = "";
 
   constructor(public digimonService:DigimonsService, public router:ActivatedRoute){ 
     this.error = false;
-
+    
+    //Acá redireccionaba a este pagina por medio de un input buscar en el navbar que aparecia en el inicio
     this.router.params.subscribe( parametros =>{
         if(parametros['texto']){
           this.buscarDigimon = parametros['texto']; //Guardo el parametro de get del navbar a mi variable local de buscar
@@ -34,7 +34,6 @@ export class DigimonsBuscadorComponent implements OnInit {
   }
   
   ngOnInit() {
-    this.capturar();
   }
 
   capturar() {
@@ -71,22 +70,33 @@ export class DigimonsBuscadorComponent implements OnInit {
 
   buscarTodos(){
     //this.buscarDigimon === "" && this.buscarDigimon.length
-    if(!this.buscarDigimon || this.capturar() == "Seleccione"){//Si no escriben nada en el buscador Y no escogen mi opcion entonces le retorno vacio
+    console.log("Parametro buscar => ", this.buscarDigimon);
+    console.log("Parametro buscar.length => ", this.buscarDigimon.length);
+    console.log("Metodo capturar =>", typeof this.capturar());
+    //Pregunto si no viene elegida la opción o no viene el texto del buscador, tienen que venir ambas para que pase true
+    if(!this.capturar() || this.buscarDigimon.trim().length == 0){
+      console.log("Entre al primer if");
       this.error = true;
-      this.mensajeErrorCapturado = "Debe seleccionar un tipo y luego escribir algo !!! ";
+      this.mensajeErrorCapturado = "Asegurese de seleccionar y escribir!!!";
       return;
-    }else if(this.capturar() == "ID" && this.buscarDigimon.length >0){
+    }/*else if(this.capturar() == null && this.buscarDigimon.trim().length >=1){
+      console.log("Entre al segundo if");
+      this.error = true;
+      this.mensajeErrorCapturado = "Asegurese de seleccionar!!!";
+      return;
+    }*/
+    else if(this.capturar() == "ID" && this.buscarDigimon.trim().length > 0){
       console.log("Estoy esperando el IDDDDDDDD !!!!!!");
-      this.digimonService.getBuscarPorId(parseInt(this.buscarDigimon.toString())).subscribe((respuesta:any)=>{
+      this.digimonService.getBuscarPorId(parseInt(this.buscarDigimon)).subscribe((respuesta:any)=>{
         this.digimonsEncontrados = respuesta;
         this.error = false;
         console.log(this.digimonsEncontrados);
       },(error)=>{
         this.error = true;
-        this.mensajeErrorCapturado = error.statusText + " No hay resultados del ID " + `${this.buscarDigimon}`;
+        this.mensajeErrorCapturado = error.statusText;
         console.log(error, "No se encontro por el id",`${this.buscarDigimon}`);
       }); 
-    }else if(this.capturar() == "Name" && this.buscarDigimon.length >0){
+    }else if(this.capturar() == "Name" && this.buscarDigimon.trim().length > 0){
       console.log("Estoy esperando el NAMEEEEEE !!!!!!");
       this.digimonService.getBuscarPorNombre(this.buscarDigimon).subscribe(
         (respuesta:any) =>{
@@ -100,7 +110,7 @@ export class DigimonsBuscadorComponent implements OnInit {
           console.log(error, "No se encontro por el Nombre",`${this.buscarDigimon}`);
         }
       );
-    }else if(this.capturar() == "Level" && this.buscarDigimon.length >0){
+    }else if(this.capturar() == "Level" && this.buscarDigimon.trim().length > 0){
       console.log("Estoy esperando el LEVELLLLLL !!!!!!");
       this.digimonService.getBuscarPorNivel(this.buscarDigimon).subscribe(
         (respuesta:any) =>{
@@ -109,9 +119,16 @@ export class DigimonsBuscadorComponent implements OnInit {
           console.log("cantidad de niveles =>", this.digimonsEncontrados.length);
         },
         (error:any)=>{
+          this.error = true;
+          this.mensajeErrorCapturado = error.statusText;
           console.log(error, "No se encontro por el Nivel",`${this.buscarDigimon}`);//Capturo el id ingresado
         }
       );
+    }else{
+      console.log("Entre al ultimo else");
+      this.error = true;
+      this.mensajeErrorCapturado = "Asegurese de seleccionar!!!";
+      return;
     }
 }
 

@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 **Eduardo Valenzuela** y **Programadores Chile** :globe_with_meridians: :computer:
 
-![image](https://drive.google.com/uc?export=view&id=11HrLYvRxoINxH16MRMpMNGMdMmMvtaD-)
+<a href="https://drive.google.com/uc?export=view&id=11HrLYvRxoINxH16MRMpMNGMdMmMvtaD-"><img src="https://drive.google.com/uc?export=view&id=11HrLYvRxoINxH16MRMpMNGMdMmMvtaD-" style="width: 500px; max-width: 100%; height: auto" title="screenshot" /></a>
 
 ## Iniciar el proyecto
 
